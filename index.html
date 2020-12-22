@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=VT323&display=swap" rel="stylesheet">
+    <title>GOT NOTES</title>
+    
+</head>
+<body>
+
+    <div class="hamburger-menu">
+        <input id="menu__toggle" type="checkbox" />
+        <label class="menu__btn" for="menu__toggle">
+          <span></span>
+        </label>
+    
+        <ul class="menu__box">
+          <li><a class="menu__item" href="#">Главная</a></li>
+                <li><a class="menu__item" href="#">HOME</a></li>
+                <li><a class="menu__item" href="ISTQB">ISTQB</a></li>
+                <li><a class="menu__item" href="#">Блог</a></li>
+                <li><a class="menu__item" href="#">Контакты</a></li>
+        </ul>
+      </div>
+
+    <h3 class="chapter-name">UNDOING CHANGES</h3>
+
+    <div class="box">
+        <p>To undo changes we need to know on which level (на каком уровне) we have the changes we want to undo are located.</p> 
+
+        <p><span class="bold-text">Working directory</span> (рабочая дериктория в которой уже есть измененные файлы)</p>
+
+        <p>If we are in the working directory and files are not added to the staging area (also called index), we are able to use the below commands.</p>
+
+        <p>While the changes or a file are in working directory, the below commands are allowed to be used.</p>
+            <ul class="no-decoration-list">
+                <div class="terminal-command-box">
+                    <li>git checkout --file.txt</li>
+                    <li>git checkout .</li>
+                    <li>git clean -xdf</li>
+                </div>
+            </ul>
+    </div>
+
+
+    <div class="box">
+        <p>We use the <span class="terminal-inline">ls</span> command to see the files that we have on the local branch. We check the status of the repo with the <span class="terminal-inline">git status</span> command. The working tree is clean, there is nothing to commit.</p>
+        <p>After that we have updated the text in documents using text editor. After the changes were saved in the text editor, the status of the local git repo has changed. The existing files have a modified status. </p>
+        <p>If we had only a few documents where we would like to undo the changes, we could do it manually. However if there is a need to undo changes in fifty documents, doing it manually may be really time consuming.  </p>
+    </div>
+
+    <!-- GIF -->
+    <div>
+        <a class="lightbox" href="#1.3.1">
+            <img src="/images/1.2.gif"/>
+        </a> 
+    
+        <div class="lightbox-target" id="1.3.1">
+            <img src="/images/1.2.gif"/>
+            <a class="lightbox-close" href="#"></a>
+        </div>
+    </div>
+
+    <div class="box">     
+        <p>So now we have two modified files and we want to get things back as they were.</p>
+        <p>We can discard the changes for a single file as it’s suggested in the terminal.</p>
+    </div>
+
+    <!-- GIF -->
+    <div>
+        <a class="lightbox" href="#1.3">
+            <img src="/images/1.3.gif"/>
+        </a> 
+    
+        <div class="lightbox-target" id="1.3">
+            <img src="/images/1.3.gif"/>
+            <a class="lightbox-close" href="#"></a>
+        </div>
+    </div>
+
+    <div class="box">     
+        <p>After the changes were discarded for the <span class="file-name">README.md</span> file, only the <span class="file-name">song.txt</span> file is in modified status. When We checked the text editor, there was a request to reload the page since there were changes made to the file.</p>
+        <p>And how do we discard changes for multiple files at the same time? There is a command for that <span class="terminal-inline">restore .</span></p>
+        <p>The <span class="terminal-inline">.</span> means - "Restore all files from the current directory and lower. (Сделать restore всех файлов от текущей дериктории и ниже)". Since we are in the root on the repository, GIT will restore all the files to the previous state ewhich is known to git. (Так как мы находимся в корне репозитория он вернет исходное состояние всех файлов известнах гиту)</p>
+    </div>
+
+        <!-- GIF -->
+        <div>
+            <a class="lightbox" href="#1.4">
+                <img src="/images/1.4.gif"/>
+            </a> 
+        
+            <div class="lightbox-target" id="1.4">
+                <img src="/images/1.4.gif"/>
+                <a class="lightbox-close" href="#"></a>
+            </div>
+        </div>
+
+        <div class="box">     
+            <p>Basically the <span class="terminal-inline">git restore &lt;file&gt;</span> and <span class="terminal-inline">restore .</span> commands will undo the chages up until the version that GIT is familiar with. That only works with preexisting files which were modified and there is a version toward which the changes may be "undone".</p> 
+        </div>
+    
+    <div class="important-box">
+        <h1>Important</h1>
+        <p>If you do a <span class="terminal-inline">checkout .</span> (or <span class="terminal-inline">restore .</span>) all of the changes in the files affected with the command will be lost permanently. Be careful with that. If you worked on somethong awesome all day and then used the <span class="terminal-inline">restore .</span> command - all of your changes are lost permanently. Almost all actions in GIT are final.</p>
+        <p class="important-inline">Look up the difference between <span class="terminal-inline">checkout .</span> and <span class="terminal-inline">restore .</span> commands.</p>
+    </div>
+    
+
+    <div class="box">
+        <p>What will happen if we have a couple of new files? Let's create two new files which don't have a version stored in the repository, since they were just created.</p>
+    </div>
+
+    <!-- GIF -->
+     <div>
+        <a class="lightbox" href="#1.5">
+            <img src="/images/1.5(adding new files).gif"/>
+        </a> 
+    
+        <div class="lightbox-target" id="1.5">
+            <img src="/images/1.5(adding new files).gif"/>
+            <a class="lightbox-close" href="#"></a>
+        </div>
+    </div>
+
+    <div class="box">
+        <p>The <span class="terminal-inline">restore</span> command will have no effect on the new files sonce they have no history in GIT yet and GIT will not remember their previous state. That's why we can't roll back the files to the previous verion, cause there is no previous version.</p>
+        <p>That's when the <span class="terminal-inline">git clean -xdf</span> command comes in handy.</p>
+    </div>
+
+    <!-- GIF -->
+    <div>
+        <a class="lightbox" href="#1.6">
+            <img src="/images/1.6(using git clean -xdf on new files).gif"/>
+        </a> 
+    
+        <div class="lightbox-target" id="1.6">
+            <img src="/images/1.6(using git clean -xdf on new files).gif"/>
+            <a class="lightbox-close" href="#"></a>
+        </div>
+    </div>
+
+    <div class="box">
+        <p>The <span class="terminal-inline">git clean</span> command has a lot of flags. Three of them were used in the above example <span class="terminal-inline">-xdf</span>. Let’s see what each of the flags stands for. </p>
+
+        <ul class="no-decoration-list">
+            <li><span class="terminal-inline">x</span> – it means we are potentially ignoring rules of the .gitignore file.</li> 
+            <li><span class="terminal-inline">d</span> – it means we will delete also directories if they are not known to git ( означает, что я удаляю в том числе и директории если они не известны гиту)</li>
+            <li><span class="terminal-inline">f</span> – stands for “force”. If the f clag is not called upon, the command will not go through.</li>
+        </ul> 
+
+    </div>
+
+    
+</body>
+</html>
